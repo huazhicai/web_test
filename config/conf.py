@@ -65,6 +65,7 @@ class ConfigManager(object):
         return ini_file
 
 
+cm = ConfigManager()
+
 if __name__ == '__main__':
-    cm = ConfigManager()
     print(cm.PROJECT_DIR)
