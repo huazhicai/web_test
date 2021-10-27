@@ -24,6 +24,8 @@ class ReadConfig(object):
         return self._get(HOST, HOST)
 
 
+ini = ReadConfig()
+
 if __name__ == '__main__':
     rc = ReadConfig()
     print(rc.url)
