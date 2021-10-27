@@ -1,11 +1,13 @@
 # -*- coding:utf-8 -*-
 import re
 import pytest
+import allure
 from utils.logger import log
 from common.readconfig import ini
 from page_object.searchpage import SearchPage
 
 
+@allure.feature("测试百度模块")
 class TestSearch:
     @pytest.fixture(scope='function', autouse=True)
     def open_baidu(self, drivers):
@@ -13,6 +15,7 @@ class TestSearch:
         search = SearchPage(drivers)
         search.get_url(ini.url)
 
+    @allure.story("搜索selenium结果用例")
     def test_001(self, drivers):
         """搜索"""
         search = SearchPage(drivers)
@@ -22,6 +25,7 @@ class TestSearch:
         log.info(result)
         assert result
 
+    @allure.story("测试搜索候选用例")
     def test_002(self, drivers):
         """测试搜索候选"""
         search = SearchPage(drivers)
