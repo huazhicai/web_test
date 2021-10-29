@@ -16,3 +16,12 @@ ckd:
   预约管理: 'xpath==//div[@class="head_nav"]/div[2]'
   文本输入框: 'xpath==//input[@type="text"]'
   统计分析: 'xpath==//div[@class="head_nav"]/div[3]'
+
+cstride:
+  user: 'xpath==//*[@id="uid"]'
+  password: 'xpath==//*[@id="password"]'
+  button: 'xpath==//button[@type="submit"]'
+  病人资料: 'xpath==//div[@class="menu"]/div[2]'
+  文本输入框: 'xpath==//input[@class="ant-input"]'
+  数据分析: 'xpath==//div[@class="menu"]/div[3]'
+  交流窗口: 'xpath==//div[@class="menu"]/div[4]'

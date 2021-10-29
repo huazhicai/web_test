@@ -8,6 +8,7 @@ SEARCH_BUTTON = '搜索按钮'
 
 class SearchPage(WebPage):
     """搜索类"""
+
     def __init__(self, driver, project_name):
         super().__init__(driver)
         self.search = Element(project_name)
@@ -29,6 +30,7 @@ class SearchPage(WebPage):
 
 class PageObject(WebPage):
     """页面基本操作类"""
+
     def __init__(self, driver, project_name):
         super().__init__(driver)
         self.search = Element(project_name)
@@ -49,3 +51,4 @@ class PageObject(WebPage):
     def click(self, click_name='button'):
         """点击搜索"""
         self.is_click(self.search[click_name])
+        sleep()

@@ -14,7 +14,6 @@ from page_object.searchpage import PageObject
 
 LOGOUT = '退出登录'
 EXPECT_WORD = '社会统计学'
-# EXPECT_WORD = '社会统计学'
 EXPECT_ELE = '文本输入框'
 
 
