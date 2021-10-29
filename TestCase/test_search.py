@@ -7,33 +7,33 @@ from common.readconfig import ini
 from page_object.searchpage import SearchPage
 
 
-@allure.feature("测试百度模块")
+@allure.feature("测试ckd模块")
 class TestSearch:
     @pytest.fixture(scope='function', autouse=True)
     def open_baidu(self, drivers):
-        """打开百度"""
+        """打开ckd"""
         search = SearchPage(drivers)
         search.get_url(ini.url)
 
-    @allure.story("搜索selenium结果用例")
+    @allure.story("搜索肺癌结果用例")
     def test_001(self, drivers):
         """搜索"""
         search = SearchPage(drivers)
-        search.input_search("selenium")
+        search.input_search("肺癌")
         search.click_search()
-        result = re.search(r'selenium', search.page_source)
+        result = re.search(r'肺癌', search.page_source)
         log.info(result)
         assert result
 
-    @allure.story("测试搜索候选用例")
-    def test_002(self, drivers):
-        """测试搜索候选"""
-        search = SearchPage(drivers)
-        search.input_search("selenium")
-        log.info(list(search.imagine))
-        assert all(["selenium" in i for i in search.imagine])
+    # @allure.story("测试搜索候选用例")
+    # def test_002(self, drivers):
+    #     """测试搜索候选"""
+    #     search = SearchPage(drivers)
+    #     search.input_search("selenium")
+    #     log.info(list(search.imagine))
+    #     assert all(["selenium" in i for i in search.imagine])
 
 
 if __name__ == '__main__':
-    pytest.main(['TestCase/test_search.py'])
+    pytest.main(['test_search.py'])
 

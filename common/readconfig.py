@@ -19,13 +19,12 @@ class ReadConfig(object):
         with open(self.cm.ini_file, 'w') as f:
             self.config.write(f)
 
-    @property
-    def url(self):
-        return self._get(HOST, HOST)
+    def get_url(self, project_name):
+        return self._get(HOST, project_name)
 
 
 ini = ReadConfig()
 
 if __name__ == '__main__':
     rc = ReadConfig()
-    print(rc.url)
+    # print(rc.url)

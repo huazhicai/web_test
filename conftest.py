@@ -20,26 +20,29 @@ def drivers(request):
         driver = webdriver.Chrome()
         driver.maximize_window()
 
-    def fn():
+    def fin():
         driver.quit()
 
-    request.addfinalizer(fn)
+    request.addfinalizer(fin)
     return driver
 
 
-@pytest.hookimpl(hookwrapper=True)
+@pytest.hookimpl(hookwrapper=True, tryfirst=True)
 def pytest_runtest_makereport(item):
     """
     当测试失败的时候，自动截图，展示到html报告中
-    :param item:
+    :param item: 测试用例
     """
     pytest_html = item.config.pluginmanager.getplugin('html')
+    # 获取钩子方法的调用结果
     outcome = yield
+    # print('用例执行结果', outcome)
+    # 从钩子方法的调用结果中获取测试报告
     report = outcome.get_result()
     report.description = str(item.function.__doc__)
     extra = getattr(report, 'extra', [])
-
-    if report.when == 'call' or report.when == "setup":
+    # print(report)
+    if report.when == 'call' or report.when == "setup":  # report.when==teardown
         xfail = hasattr(report, 'wasxfail')
         if (report.skipped and xfail) or (report.failed and not xfail):
             screen_img = _capture_screenshot()
@@ -62,26 +65,26 @@ def pytest_html_results_table_row(report, cells):
     cells.pop(2)
 
 
-def pytest_html_results_table_html(report, data):
-    if report.passed:
-        data.clear()
-        data.append(html.div('通过的用例未捕获日志输出.', class_='empty log'))
+# def pytest_html_results_table_html(report, cells):
+#     if report.passed:
+#         del cells[:]
+#         cells.append(html.div('通过的用例未捕获日志输出.', class_='empty log'))
 
 
 def pytest_html_report_title(report):
-    report.title = "pytest示例项目测试报告"
+    report.title = "智慧医疗项目测试报告"
 
 
 def pytest_configure(config):
     config._metadata.clear()
-    config._metadata['测试项目'] = "测试百度官网搜索"
-    config._metadata['测试地址'] = ini.url
+    config._metadata['测试项目'] = "all online projects"
+    # config._metadata['测试地址'] = ini.url
 
 
 def pytest_html_results_summary(prefix, summary, postfix):
     # prefix.clear() # 清空summary中的内容
-    prefix.extend([html.p("所属部门: XX公司测试部")])
-    prefix.extend([html.p("测试执行人: 随风挥手")])
+    prefix.extend([html.p("测试部门：智慧医疗")])
+    prefix.extend([html.p("测试执行人: Seven")])
 
 
 def pytest_terminal_summary(terminalreporter, exitstatus, config):
@@ -95,9 +98,9 @@ def pytest_terminal_summary(terminalreporter, exitstatus, config):
         # terminalreporter._sessionstarttime 会话开始时间
         'total times': timestamp() - terminalreporter._sessionstarttime
     }
-    print(result)
-    if result['failed'] or result['error']:
-        send_report()
+    # print(result)
+    # if result['failed'] or result['error']:
+    #     send_report()
 
 
 def _capture_screenshot():

@@ -1,4 +1,9 @@
-搜索框: "id==kw"
-候选: "css==.bdsug-overflow"
-搜索候选: "css==#form div li"
-搜索按钮: "id==su"
+multimodal:
+  搜索框: 'xpath==//input[@class="ant-input ant-input-lg"]'
+  搜索按钮: 'xpath==//button[@type="submit"]'
+  候选: 'xpath==//'
+
+smksp:
+  搜索框: 'xpath==//input[@class="ant-input"]'
+  搜索按钮: 'xpath==//div[@class="button ml16 button-32"]'
+  候选: 'xpath==//td[@class="ant-table-cell"]'
