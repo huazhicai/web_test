@@ -27,7 +27,7 @@ def drivers(request):
     return driver
 
 
-@pytest.hookimpl(hookwrapper=True, tryfirst=True)
+@pytest.hookimpl(hookwrapper=True)
 def pytest_runtest_makereport(item):
     """
     当测试失败的时候，自动截图，展示到html报告中

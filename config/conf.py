@@ -64,6 +64,9 @@ class ConfigManager(object):
 
     USER_PSW = [('test2', 'ZHYL2021'), ('test2', '123456')]  # 卫健委第二个
 
+    HEADER = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36'}
+    EXCLUDE_URLS = []
+
     @property
     def screen_path(self):
         """截图目录"""
