@@ -7,3 +7,12 @@ smksp:
   搜索框: 'xpath==//input[@class="ant-input"]'
   搜索按钮: 'xpath==//div[@class="button ml16 button-32"]'
   候选: 'xpath==//td[@class="ant-table-cell"]'
+
+
+ckd:
+  user: 'xpath==//input[@name="username"]'
+  password: 'xpath==//input[@name="password"]'
+  button: 'xpath==//button[@class="el-button el-button--primary"]'
+  预约管理: 'xpath==//div[@class="head_nav"]/div[2]'
+  文本输入框: 'xpath==//input[@type="text"]'
+  统计分析: 'xpath==//div[@class="head_nav"]/div[3]'

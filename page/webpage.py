@@ -16,7 +16,7 @@ class WebPage(object):
     """selenium基类"""
     def __init__(self, driver):
         self.driver = driver
-        self.timeout = 20
+        self.timeout = 15
         self.wait = WebDriverWait(self.driver, self.timeout)
 
     def get_url(self, url):
@@ -38,9 +38,12 @@ class WebPage(object):
 
     def find_element(self, locator):
         """寻找单个元素"""
-        return WebPage.element_locator(lambda *args: self.wait.until(
-            EC.presence_of_element_located(args)
-        ), locator)
+        try:
+            return WebPage.element_locator(lambda *args: self.wait.until(
+                EC.presence_of_element_located(args)
+            ), locator)
+        except Exception as e:
+            log.info(e)
 
     def find_elements(self, locator):
         """查找多个相同的元素"""
