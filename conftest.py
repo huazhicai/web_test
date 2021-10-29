@@ -17,7 +17,16 @@ driver = None
 def drivers(request):
     global driver
     if driver is None:
-        driver = webdriver.Chrome()
+        options = webdriver.ChromeOptions()
+        options.add_experimental_option(
+            'excludeSwitches',
+            ['enable-automation'])
+        prefs = {"credentials_enable_service": False,
+                 "profile.password_manager_enabled": False}
+        options.add_experimental_option("prefs", prefs)
+        options.add_argument("--disable-popup-blocking")
+
+        driver = webdriver.Chrome(options=options)
         driver.maximize_window()
 
     def fin():

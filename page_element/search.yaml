@@ -8,7 +8,6 @@ smksp:
   搜索按钮: 'xpath==//div[@class="button ml16 button-32"]'
   候选: 'xpath==//td[@class="ant-table-cell"]'
 
-
 ckd:
   user: 'xpath==//input[@name="username"]'
   password: 'xpath==//input[@name="password"]'
@@ -25,3 +24,24 @@ cstride:
   文本输入框: 'xpath==//input[@class="ant-input"]'
   数据分析: 'xpath==//div[@class="menu"]/div[3]'
   交流窗口: 'xpath==//div[@class="menu"]/div[4]'
+
+nhc:
+  user: 'xpath==//*[@id="uid"]'
+  password: 'xpath==//*[@id="password"]'
+  button: 'xpath==//button[@type="submit"]'
+
+lcdms:
+  user: 'xpath==//*[@id="uid"]'
+  password: 'xpath==//*[@id="password"]'
+  button: 'xpath==//button[@type="submit"]'
+  病人资料: 'xpath==//div[@class="menu"]/div[2]'
+  文本输入框: 'xpath==//input[@class="ant-input"]'
+  智能检索: 'xpath==//div[@class="menu"]/div[3]'
+  数据分析: 'xpath==//div[@class="menu"]/div[4]'
+
+nursequeue:
+  user: 'xpath==//*[@id="uid"]'
+  password: 'xpath==//*[@id="password"]'
+  button: 'xpath==//button[@type="submit"]'
+  护士资料: 'xpath==//div[@class="menu"]/div[2]'
+  文本输入框: 'xpath==//input[@class="ant-input"]'
