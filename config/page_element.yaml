@@ -1,12 +1,12 @@
 multimodal:
-  搜索框: 'xpath==//input[@class="ant-input ant-input-lg"]'
-  搜索按钮: 'xpath==//button[@type="submit"]'
-  候选: 'xpath==//'
+  search_box: 'xpath==//input[@class="ant-input ant-input-lg"]'
+  button: 'xpath==//button[@type="submit"]'
+  数据检索结果: 'xpath==//div[@class="mb20"]/div/span'
 
 smksp:
-  搜索框: 'xpath==//input[@class="ant-input"]'
-  搜索按钮: 'xpath==//div[@class="button ml16 button-32"]'
-  候选: 'xpath==//td[@class="ant-table-cell"]'
+  search_box: 'xpath==//input[@class="ant-input"]'
+  button: 'xpath==//div[@class="button ml16 button-32"]'
+  expect: 'xpath==//td[@class="ant-table-cell"]'
 
 ckd:
   user: 'xpath==//input[@name="username"]'
@@ -33,7 +33,7 @@ nhc:
 lcdms:
   user: 'xpath==//*[@id="uid"]'
   password: 'xpath==//*[@id="password"]'
-  button: 'xpath==//button[@type="submit"]'
+  button: 'xpath==//button[@type="submit"]/span'
   病人资料: 'xpath==//div[@class="menu"]/div[2]'
   文本输入框: 'xpath==//input[@class="ant-input"]'
   智能检索: 'xpath==//div[@class="menu"]/div[3]'
@@ -44,4 +44,15 @@ nursequeue:
   password: 'xpath==//*[@id="password"]'
   button: 'xpath==//button[@type="submit"]'
   护士资料: 'xpath==//div[@class="menu"]/div[2]'
-  文本输入框: 'xpath==//input[@class="ant-input"]'
+  expect: 'xpath==//input[@class="ant-input"]'
+
+k_grid:
+  应用展示: 'xpath==//div[@class="menu_list"]/span[2]'
+  search_box: 'xpath==//input[@class="ant-input ant-input-lg"]'
+  button: 'xpath==//div[@class="mb20"]/span/span'
+  expect: 'xpath==//p[@class="title"]'
+  知识对象: 'xpath==//div[@class="menu_list"]/span[3]'
+  BMI 计算: 'xpath==//div[@class="bottom"]'
+  平台引导: 'xpath==//div[@class="menu_list"]/span[4]'
+  大事记: 'xpath==//div[@class="menu_list"]/span[5]'
+  关于我们: 'xpath==//div[@class="menu_list"]/span[6]'

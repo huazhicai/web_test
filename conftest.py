@@ -9,6 +9,7 @@ from config.conf import cm
 from common.readconfig import ini
 from utils.times import timestamp
 from utils.send_mail import send_report
+from utils.logger import log
 
 driver = None
 
@@ -16,18 +17,20 @@ driver = None
 @pytest.fixture(scope='session', autouse=True)
 def drivers(request):
     global driver
-    if driver is None:
-        options = webdriver.ChromeOptions()
-        options.add_experimental_option(
-            'excludeSwitches',
-            ['enable-automation'])
-        prefs = {"credentials_enable_service": False,
-                 "profile.password_manager_enabled": False}
-        options.add_experimental_option("prefs", prefs)
-        options.add_argument("--disable-popup-blocking")
+    # if driver is None:
+    options = webdriver.ChromeOptions()
+    options.add_experimental_option('excludeSwitches', ['enable-automation'])
+    prefs = {"credentials_enable_service": False, "profile.password_manager_enabled": False}
+    options.add_experimental_option("prefs", prefs)
+    options.add_argument('--headless')
+    options.add_argument('--window-size=1920,1080')
+    options.add_argument("--disable-popup-blocking")
 
-        driver = webdriver.Chrome(options=options)
-        driver.maximize_window()
+    driver = webdriver.Chrome(options=options)
+    driver.execute_cdp_cmd("Page.addScriptToEvaluateOnNewDocument", {
+        "source": "Object.defineProperty(navigator, 'webdriver', {get: () => undefined})"
+    })
+    # driver.maximize_window()
 
     def fin():
         driver.quit()
@@ -43,15 +46,11 @@ def pytest_runtest_makereport(item):
     :param item: 测试用例
     """
     pytest_html = item.config.pluginmanager.getplugin('html')
-    # 获取钩子方法的调用结果
     outcome = yield
-    # print('用例执行结果', outcome)
-    # 从钩子方法的调用结果中获取测试报告
     report = outcome.get_result()
-    report.description = str(item.function.__doc__)
     extra = getattr(report, 'extra', [])
-    # print(report)
-    if report.when == 'call' or report.when == "setup":  # report.when==teardown
+    report.description = str(item.function.__doc__)
+    if report.when == 'call' or report.when == "setup":
         xfail = hasattr(report, 'wasxfail')
         if (report.skipped and xfail) or (report.failed and not xfail):
             screen_img = _capture_screenshot()
@@ -63,7 +62,7 @@ def pytest_runtest_makereport(item):
 
 
 def pytest_html_results_table_header(cells):
-    cells.insert(1, html.th('用例名称'))
+    cells.insert(1, html.th('用例描述'))
     cells.insert(2, html.th('Test_nodeid'))
     cells.pop(2)
 
@@ -74,25 +73,25 @@ def pytest_html_results_table_row(report, cells):
     cells.pop(2)
 
 
-# def pytest_html_results_table_html(report, cells):
-#     if report.passed:
-#         del cells[:]
-#         cells.append(html.div('通过的用例未捕获日志输出.', class_='empty log'))
+def pytest_html_results_table_html(report, data):
+    if report.passed:
+        del data[:]
+        data.append(html.div('No log output captured.', class_='empty log'))
 
 
 def pytest_html_report_title(report):
-    report.title = "智慧医疗项目测试报告"
+    report.title = "外网项目测试报告"
 
 
 def pytest_configure(config):
     config._metadata.clear()
-    config._metadata['测试项目'] = "all online projects"
+    config._metadata['测试项目'] = "外网项目"
     # config._metadata['测试地址'] = ini.url
 
 
 def pytest_html_results_summary(prefix, summary, postfix):
-    # prefix.clear() # 清空summary中的内容
-    prefix.extend([html.p("测试部门：智慧医疗")])
+    # prefix.clear()  # 清空summary中的内容
+    prefix.extend([html.p("测试部门：重大疾病实验室")])
     prefix.extend([html.p("测试执行人: Seven")])
 
 
@@ -107,18 +106,17 @@ def pytest_terminal_summary(terminalreporter, exitstatus, config):
         # terminalreporter._sessionstarttime 会话开始时间
         'total times': timestamp() - terminalreporter._sessionstarttime
     }
-    # print(result)
+    print(result)
     # if result['failed'] or result['error']:
     #     send_report()
 
 
 def _capture_screenshot():
     """截图保存为base64"""
-    now_time, screen_file = cm.screen_path
+    now_time, screen_file = cm.screen_file
     driver.save_screenshot(screen_file)
-    allure.attach.file(screen_file,
-                       "失败截图{}".format(now_time),
-                       allure.attachment_type.PNG)
+    allure.attach.file(screen_file, "测试失败截图...{}".format(
+        now_time), allure.attachment_type.PNG)
     with open(screen_file, 'rb') as f:
         imagebase64 = base64.b64encode(f.read())
     return imagebase64.decode()

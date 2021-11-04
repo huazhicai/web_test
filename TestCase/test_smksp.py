@@ -5,7 +5,7 @@ import pytest
 import allure
 from utils.logger import log
 from common.readconfig import ini
-from page_object.searchpage import SearchPage
+from page_object.searchpage import PageObject
 
 
 SEARCH_KEY = 'Virus'
@@ -19,22 +19,19 @@ def project_name():
 
 @allure.feature("测试结构化医疗搜索模块")
 class TestSearch:
-    @pytest.fixture(scope='function', autouse=True)
+    @pytest.fixture(scope='class', autouse=True)
     def open_page(self, drivers, project_name):
         """打开结构化医疗网页测试"""
-        search = SearchPage(drivers, project_name)
+        page = PageObject(drivers, project_name)
         page_url = ini.get_url(project_name)
-        search.get_url(page_url)
+        page.get_url(page_url)
 
-    @allure.story(f"搜索{SEARCH_KEY}结果")
+    @allure.story(f"医疗结构知识测试用例")
     def test_002(self, drivers, project_name):
-        """搜索Virus结果测试"""
-        search = SearchPage(drivers, project_name)
-        search.input_search(SEARCH_KEY)
-        search.click_search()
-        # result = re.search(SEARCH_KEY, search.page_source)
-        # log.info(list(search.imagine))
-        assert any([SEARCH_KEY in i for i in search.imagine])
+        """搜索Virus测试"""
+        page = PageObject(drivers, project_name)
+        page.search(SEARCH_KEY)
+        assert any([SEARCH_KEY in i for i in page.find_expect_texts()])
 
 
 if __name__ == '__main__':

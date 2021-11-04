@@ -18,20 +18,17 @@ def project_name():
     return module_name[5:]
 
 
-@allure.feature("测试卫健委模块")
-class TestSearch:
+@allure.feature("卫健委测试模块")
+class TestCase:
     @allure.story('卫健委登录测试')
     def test_001(self, drivers, project_name):
         """卫健委登录测试"""
         page = PageObject(drivers, project_name)
         page_url = ini.get_url(project_name)
         page.get_url(page_url)
-        page.input('user', cm.USER)
-        page.input('password', cm.PASSWORD2)
-        page.click()
+        page.login(cm.USER, cm.PASSWORD2)
 
         result = re.search(EXPECT_WORD, page.page_source)
-        log.info(result)
         assert result
 
 

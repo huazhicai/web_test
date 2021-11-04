@@ -48,29 +48,15 @@ class ConfigManager(object):
         'django3997@dingtalk.com',
     ]
 
-    # project name
-    PROJECT_2_URL = {
-        'k_grid': 'https://www.kgrid-china.net/layout/Home',
-        'ck_net': 'https://www.chinakidney.net/',
-        'multimodal': 'http://47.98.134.243:8390/multimodal-web/index',  # 多模态
-        'foodsystem': 'http://foodsystem.wit-health.net:8190/foodsystem-web/Front_2/Template_C_1',
-        'nursequeue': 'https://nursecohort.kgrid-china.net/rmyy-nursequeue-web/login',
-        'cstride': 'https://cstride.bjmu.edu.cn/login',  # 多中心
-        'ckd': 'https://chinackd.bjmu.edu.cn/followup-web/module/login.html#/',
-        'nhc': 'https://nhc.chinakidney.net/login',  # 卫健委
-        'lcdms': 'https://lcdms.bjmu.edu.cn/hydrocephaly-web/login',  # 脑积水
-        'smksp': 'http://202.112.180.134/smksp-web/search',  # 结构化医疗搜索
-    }
-
     USER = 'test2'
     PASSWORD = 'ZHYL2021'
-    PASSWORD2 = '123456'  # 卫健委第二个
+    PASSWORD2 = '123456'  # 卫健委
 
     HEADER = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36'}
     EXCLUDE_URLS = []
 
     @property
-    def screen_path(self):
+    def screen_file(self):
         """截图目录"""
         screenshot_dir = os.path.join(self.ROOT_DIR, 'screen_capture')
         if not os.path.exists(screenshot_dir):
@@ -94,6 +80,14 @@ class ConfigManager(object):
         if not os.path.exists(ini_file):
             raise FileNotFoundError("配置文件%s不存在！" % ini_file)
         return ini_file
+
+    @property
+    def element_file(self):
+        """xpath 定位配置文件"""
+        element_file = os.path.join(self.ROOT_DIR, 'config', 'page_element.yaml')
+        if not os.path.exists(element_file):
+            raise FileNotFoundError("配置文件%s不存在！" % element_file)
+        return element_file
 
 
 cm = ConfigManager()

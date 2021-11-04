@@ -1,0 +1,259 @@
+<body class="page-login-body page-login-body_hydrocephaly">
+<noscript>You need to enable JavaScript to run this app.</noscript>
+<script>var ISMOBILE;
+window.AntdMobile = window["antd-mobile"], ISMOBILE = !!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent), console.log("ISMOBILE", ISMOBILE, navigator.userAgent)</script>
+<script src="/hydrocephaly-web/static/js/moblieDebug.js"></script>
+<script>window.less = {async: !1, env: "production"}</script>
+<script type="text/javascript" src="/hydrocephaly-web/static/less.min.js"></script>
+<div id="root">
+    <div class="page-login"><img
+            src="data:image/png;base64,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"
+            alt="" class="position-absolute icon_1"/>
+        <div class="module-login">
+            <div class="head-title"><span class="img primary-color-bg"></span>
+                <div class="span-hi">Hi,欢迎登录</div>
+                <div class="span-title ">正常压力脑积水多中心数据协作管理平台</div>
+            </div>
+            <form class="ant-form ant-form-horizontal">
+                <div class="login-form primary-shadow mb40">
+                    <div class="f16 font-weight-bold mb10 mt4">帐号</div>
+                    <div class="ant-row ant-form-item" style="row-gap: 0px;">
+                        <div class="ant-col ant-form-item-control">
+                            <div class="ant-form-item-control-input">
+                                <div class="ant-form-item-control-input-content"><input placeholder="请输入用户名、手机或邮箱"
+                                                                                        type="text" id="uid"
+                                                                                        class="ant-input ant-input-lg"
+                                                                                        value=""/></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="f16 font-weight-bold mb10">密码</div>
+                    <div class="ant-row ant-form-item" style="row-gap: 0px;">
+                        <div class="ant-col ant-form-item-control">
+                            <div class="ant-form-item-control-input">
+                                <div class="ant-form-item-control-input-content"><input placeholder="请输入密码"
+                                                                                        action="click" id="password"
+                                                                                        type="password"
+                                                                                        class="ant-input ant-input-lg ant-input-password ant-input-password-large"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-align-right primary-color cursor mb20">忘记密码?</div>
+                </div>
+                <div class="ant-row ant-form-item" style="row-gap: 0px;">
+                    <div class="ant-col ant-form-item-control">
+                        <div class="ant-form-item-control-input">
+                            <div class="ant-form-item-control-input-content">
+                                <button type="submit"
+                                        class="ant-btn ant-btn-primary ant-btn-round ant-btn-lg ant-btn-block submit-btn">
+                                    <span>登 录</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="bottom-container">
+            <div class="position-absolute text-align-center"
+                 style="top: -100px; width: 100%; color: rgb(187, 187, 187);"><img
+                    src="data:image/png;base64,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"
+                    alt=""/>
+                <p> 技术支持：浙江省北大信息技术高等研究院</p></div>
+            <div class="com_canvas_wave primary-color"></div>
+        </div>
+    </div>
+</div>
+<script>!function (e) {
+    function t(t) {
+        for (var n, a, f = t[0], u = t[1], d = t[2], i = 0, s = []; i &lt; f.length; i++) a = f[i], Object.prototype.hasOwnProperty.call(o, a) &amp;&amp; o[a] &amp;&amp; s.push(o[a][0]), o[a] = 0;
+        for (n in u) Object.prototype.hasOwnProperty.call(u, n) &amp;&amp; (e[n] = u[n]);
+        for (l &amp;&amp; l(t); s.length;) s.shift()();
+        return c.push.apply(c, d || []), r()
+    }
+
+    function r() {
+        for (var e, t = 0; t &lt; c.length; t++) {
+            for (var r = c[t], n = !0, a = 1; a &lt; r.length; a++) {
+                var u = r[a];
+                0 !== o[u] &amp;&amp; (n = !1)
+            }
+            n &amp;&amp; (c.splice(t--, 1), e = f(f.s = r[0]))
+        }
+        return e
+    }
+
+    var n = {}, a = {2: 0}, o = {2: 0}, c = [];
+
+    function f(t) {
+        if (n[t]) return n[t].exports;
+        var r = n[t] = {i: t, l: !1, exports: {}};
+        return e[t].call(r.exports, r, r.exports, f), r.l = !0, r.exports
+    }
+
+    f.e = function (e) {
+        var t = [];
+        a[e] ? t.push(a[e]) : 0 !== a[e] &amp;&amp; {
+            0: 1,
+            4: 1,
+            5: 1,
+            6: 1,
+            7: 1,
+            8: 1,
+            9: 1,
+            10: 1,
+            11: 1,
+            12: 1,
+            13: 1,
+            14: 1,
+            15: 1,
+            16: 1,
+            17: 1,
+            18: 1,
+            19: 1,
+            20: 1,
+            21: 1
+        }[e] &amp;&amp; t.push(a[e] = new Promise((function (t, r) {
+            for (var n = "static/css/" + ({}[e] || e) + "." + {
+                0: "dee15e01",
+                4: "cfb74f23",
+                5: "a1c7fbbd",
+                6: "4c3f35fe",
+                7: "c42372dd",
+                8: "b80baf1b",
+                9: "48508501",
+                10: "31d40be4",
+                11: "e31044ca",
+                12: "cd49a4c1",
+                13: "8f3b48cc",
+                14: "d1f80a3d",
+                15: "7be37980",
+                16: "8f724faa",
+                17: "32889d77",
+                18: "9693ddbd",
+                19: "94964801",
+                20: "a5fd58c5",
+                21: "79629293",
+                22: "31d6cfe0",
+                23: "31d6cfe0",
+                24: "31d6cfe0",
+                25: "31d6cfe0",
+                26: "31d6cfe0",
+                27: "31d6cfe0",
+                28: "31d6cfe0",
+                29: "31d6cfe0",
+                30: "31d6cfe0",
+                31: "31d6cfe0"
+            }[e] + ".chunk.css", o = f.p + n, c = document.getElementsByTagName("link"), u = 0; u &lt; c.length; u++) {
+                var d = (l = c[u]).getAttribute("data-href") || l.getAttribute("href");
+                if ("stylesheet" === l.rel &amp;&amp; (d === n || d === o)) return t()
+            }
+            var i = document.getElementsByTagName("style");
+            for (u = 0; u &lt; i.length; u++) {
+                var l;
+                if ((d = (l = i[u]).getAttribute("data-href")) === n || d === o) return t()
+            }
+            var s = document.createElement("link");
+            s.rel = "stylesheet", s.type = "text/css", s.onload = t, s.onerror = function (t) {
+                var n = t &amp;&amp; t.target &amp;&amp; t.target.src || o,
+                    c = new Error("Loading CSS chunk " + e + " failed.\n(" + n + ")");
+                c.code = "CSS_CHUNK_LOAD_FAILED", c.request = n, delete a[e], s.parentNode.removeChild(s), r(c)
+            }, s.href = o, document.getElementsByTagName("head")[0].appendChild(s)
+        })).then((function () {
+            a[e] = 0
+        })));
+        var r = o[e];
+        if (0 !== r) if (r) t.push(r[2]); else {
+            var n = new Promise((function (t, n) {
+                r = o[e] = [t, n]
+            }));
+            t.push(r[2] = n);
+            var c, u = document.createElement("script");
+            u.charset = "utf-8", u.timeout = 120, f.nc &amp;&amp; u.setAttribute("nonce", f.nc), u.src = function (e) {
+                return f.p + "static/js/" + ({}[e] || e) + "." + {
+                    0: "3a5a177e",
+                    4: "b37c862e",
+                    5: "d344f4d0",
+                    6: "cbbaad37",
+                    7: "b9e572ba",
+                    8: "365e0547",
+                    9: "599095bf",
+                    10: "5725b6d7",
+                    11: "23b82931",
+                    12: "8ef9bd5f",
+                    13: "cb319bbc",
+                    14: "59188042",
+                    15: "1d930721",
+                    16: "7661c153",
+                    17: "a491954d",
+                    18: "579b2519",
+                    19: "c530ba8b",
+                    20: "0492ef58",
+                    21: "3efa767f",
+                    22: "0598be40",
+                    23: "2facae8c",
+                    24: "63424efe",
+                    25: "0b139711",
+                    26: "7199c75a",
+                    27: "0f31f6cf",
+                    28: "61c59a35",
+                    29: "a5a094e8",
+                    30: "46f15661",
+                    31: "3fdc2106"
+                }[e] + ".chunk.js"
+            }(e);
+            var d = new Error;
+            c = function (t) {
+                u.onerror = u.onload = null, clearTimeout(i);
+                var r = o[e];
+                if (0 !== r) {
+                    if (r) {
+                        var n = t &amp;&amp; ("load" === t.type ? "missing" : t.type),
+                            a = t &amp;&amp; t.target &amp;&amp; t.target.src;
+                        d.message = "Loading chunk " + e + " failed.\n(" + n + ": " + a + ")", d.name = "ChunkLoadError", d.type = n, d.request = a, r[1](d)
+                    }
+                    o[e] = void 0
+                }
+            };
+            var i = setTimeout((function () {
+                c({type: "timeout", target: u})
+            }), 12e4);
+            u.onerror = u.onload = c, document.head.appendChild(u)
+        }
+        return Promise.all(t)
+    }, f.m = e, f.c = n, f.d = function (e, t, r) {
+        f.o(e, t) || Object.defineProperty(e, t, {enumerable: !0, get: r})
+    }, f.r = function (e) {
+        "undefined" != typeof Symbol &amp;&amp; Symbol.toStringTag &amp;&amp; Object.defineProperty(e, Symbol.toStringTag, {value: "Module"}), Object.defineProperty(e, "__esModule", {value: !0})
+    }, f.t = function (e, t) {
+        if (1 &amp; t &amp;&amp; (e = f(e)), 8 &amp; t) return e;
+        if (4 &amp; t &amp;&amp; "object" == typeof e &amp;&amp; e &amp;&amp; e.__esModule) return e;
+        var r = Object.create(null);
+        if (f.r(r), Object.defineProperty(r, "default", {
+            enumerable: !0,
+            value: e
+        }), 2 &amp; t &amp;&amp; "string" != typeof e) for (var n in e) f.d(r, n, function (t) {
+            return e[t]
+        }.bind(null, n));
+        return r
+    }, f.n = function (e) {
+        var t = e &amp;&amp; e.__esModule ? function () {
+            return e.default
+        } : function () {
+            return e
+        };
+        return f.d(t, "a", t), t
+    }, f.o = function (e, t) {
+        return Object.prototype.hasOwnProperty.call(e, t)
+    }, f.p = "/hydrocephaly-web/", f.oe = function (e) {
+        throw e
+    };
+    var u = this["webpackJsonpweb-templates"] = this["webpackJsonpweb-templates"] || [], d = u.push.bind(u);
+    u.push = t, u = u.slice();
+    for (var i = 0; i &lt; u.length; i++) t(u[i]);
+    var l = d;
+    r()
+}([])</script>
+<script src="/hydrocephaly-web/static/js/3.6cdfa054.chunk.js"></script>
+<script src="/hydrocephaly-web/static/js/main.02b73088.chunk.js"></script>
+</body>
